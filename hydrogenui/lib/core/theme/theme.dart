@@ -6,7 +6,7 @@ import 'package:hydrogenui/core/theme/palette.dart';
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   splashColor: Colors.transparent,
-  textTheme: GoogleFonts.kodeMonoTextTheme(),
+  fontFamily: GoogleFonts.kodeMono.toString(),
 
   scaffoldBackgroundColor: Palette.scaffoldBackgroundColor,
   iconTheme: const IconThemeData(color: Palette.primaryColor),
@@ -14,7 +14,7 @@ ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme.dark(
     primary: Palette.primaryColor,
     secondary: Palette.secondaryColor,
-    surface:  Palette.scaffoldBackgroundColor,
+    surface: Palette.scaffoldBackgroundColor,
     onPrimary: Color(0xFF522820),
     onSecondary: Color(0xFF012834),
   ),
