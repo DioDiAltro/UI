@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hydrogenui/screens/HomePage.dart';
+import 'package:hydrogenui/core/theme/theme.dart';
+import 'package:hydrogenui/screens/home_page.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
@@ -22,35 +22,15 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final customRedTheme = ThemeData(
-    brightness: Brightness.dark,
-    colorScheme: const ColorScheme.dark(
-      primary: Color(0xFFDC5741),
-      secondary: Color(0xFF8E665E),
-      surface: Color(0xFF111312),
-      onPrimary: Color(0xFF522820),
-      onSecondary: Color(0xFF012834),
-    ),
-
-    textTheme: GoogleFonts.kodeMonoTextTheme(),
-
-    buttonTheme: const ButtonThemeData(
-      buttonColor: Color(0xFF721B17), // colore pulsanti
-      textTheme: ButtonTextTheme.primary,
-    ),
-  ).obs;
-
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'HydroGenUI',
-        theme: customRedTheme.value,
-        home: MyHomePage(),
-      ),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'HydroGenUI',
+      theme: darkTheme,
+      home: MyHomePage(),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hydrogenui/widgets/TerminalInput.dart';
+import 'package:hydrogenui/widgets/custom_card.dart';
+import 'package:hydrogenui/widgets/terminal_input.dart';
 
 class ClockController extends GetxController {
   var time = ''.obs;
@@ -12,13 +12,12 @@ class ClockController extends GetxController {
   void onInit() {
     super.onInit();
     _update();
-    _timer = Timer.periodic(Duration(seconds: 1), (_) => _update());
   }
 
   void _update() {
     final now = DateTime.now();
-    time.value =
-        "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}:${now.second.toString().padLeft(2, '0')}";
+    time.value = "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}:${now.second.toString().padLeft(2, '0')}";
+    Future.delayed(const Duration(seconds: 1), _update);
   }
 
   @override
@@ -69,12 +68,10 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Card(
-                        child: Center(child: Text("Network Monitor")),
-                      ),
+                      child: CustomCard(title: "Network Monitor"),
                     ),
                     Expanded(
-                      child: Card(child: Center(child: Text("File Explorer"))),
+                      child: CustomCard(title: "File Explorer"),
                     ),
                   ],
                 ),

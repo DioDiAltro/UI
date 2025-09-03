@@ -41,18 +41,17 @@ class TerminalInput extends StatelessWidget {
       children: [
         Obx(() {
           if (controller.output.isNotEmpty) {
-            return Expanded(
-              child: ListView.builder(
-                itemCount: controller.output.length,
-                itemBuilder: (context, index) {
-                  return Text(
-                    controller.output[index],
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  );
-                },
-              ),
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: controller.output.length,
+              itemBuilder: (context, index) {
+                return Text(
+                  controller.output[index],
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                );
+              },
             );
           } else {
             return const SizedBox.shrink();
@@ -61,10 +60,15 @@ class TerminalInput extends StatelessWidget {
         TextField(
           style: TextStyle(color: Theme.of(context).colorScheme.secondary),
           controller: controller.inputController,
+          autofocus: true,
           maxLines: null,
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
-            labelText: '>_:',
+            prefixIcon: Text(
+              '>_:',
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+            ),
+            prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
             labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             border: InputBorder.none,
             focusedBorder: InputBorder.none,
